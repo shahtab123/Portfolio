@@ -79,6 +79,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.shahtab.xyz",
   },
+  verification: {
+    google: "CxP3d2LW6bBhdLiFBY188c7-i1FCtBQ-lqqGPLIjB-Q",
+  },
   category: "technology",
   manifest: "/manifest.json",
   icons: {
