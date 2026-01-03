@@ -85,8 +85,8 @@ export const metadata: Metadata = {
   category: "technology",
   manifest: "/manifest.json",
   icons: {
-    icon: "/profile-pic (11).png",
-    apple: "/profile-pic (11).png",
+    icon: "/swamp-monster.png",
+    apple: "/swamp-monster.png",
   },
 };
 
