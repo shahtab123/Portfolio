@@ -171,6 +171,11 @@ OAuth is the standard for third-party authentication:
 // Default blog posts (fallback if localStorage is empty)
 const defaultBlogPosts: BlogPost[] = blogPosts;
 
+// Export default posts for server-side use (sitemap, etc.)
+export function getDefaultBlogPosts(): BlogPost[] {
+  return defaultBlogPosts;
+}
+
 // Helper function to load from localStorage
 function loadFromLocalStorage(): BlogPost[] {
   if (typeof window === "undefined") {
