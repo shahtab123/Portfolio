@@ -81,10 +81,12 @@ Give it a try and let me know what you think!
 // GET - Fetch a single blog post by ID
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+  
   try {
-    const filename = `blog-posts/${params.id}.json`;
+    const filename = `blog-posts/${id}.json`;
     
     // List blobs with the specific filename
     const { blobs } = await list({
@@ -96,7 +98,7 @@ export async function GET(
     
     if (!blob) {
       // Fallback to default posts
-      const defaultPost = getDefaultPost(params.id);
+      const defaultPost = getDefaultPost(id);
       if (defaultPost) {
         return NextResponse.json(defaultPost);
       }
@@ -114,7 +116,7 @@ export async function GET(
   } catch (error) {
     console.error("Error fetching blog post:", error);
     // Fallback to default posts
-    const defaultPost = getDefaultPost(params.id);
+    const defaultPost = getDefaultPost(id);
     if (defaultPost) {
       return NextResponse.json(defaultPost);
     }
