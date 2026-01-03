@@ -34,7 +34,7 @@ async function getBlogPosts(): Promise<BlogPost[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://shahtab.xyz";
+  const baseUrl = "https://www.shahtab.xyz";
   
   // Fetch blog posts
   const blogPosts = await getBlogPosts();

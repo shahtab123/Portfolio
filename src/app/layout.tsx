@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shahtab.xyz"),
+  metadataBase: new URL("https://www.shahtab.xyz"),
   title: {
     default: "Shahtab Mohtasin | Software Engineer & Full Stack Developer",
     template: "%s | Shahtab Mohtasin",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://shahtab.xyz",
+    url: "https://www.shahtab.xyz",
     siteName: "Shahtab Mohtasin Portfolio",
     title: "Shahtab Mohtasin | Software Engineer & Full Stack Developer",
     description:
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     images: ["/card.png"],
   },
   alternates: {
-    canonical: "https://shahtab.xyz",
+    canonical: "https://www.shahtab.xyz",
   },
   category: "technology",
   manifest: "/manifest.json",

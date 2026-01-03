@@ -17,8 +17,8 @@ export default function Home() {
     description:
       "Freelance developer and IT consultant specializing in building production-ready software solutions. Master's in IT Management from De Montfort University.",
     email: "cloudstack6@gmail.com",
-    url: "https://shahtab.xyz",
-    image: "https://shahtab.xyz/card.png",
+    url: "https://www.shahtab.xyz",
+    image: "https://www.shahtab.xyz/card.png",
     sameAs: [
       "https://github.com/shahtab123",
       "https://www.linkedin.com/in/shahtab-mohtasin/",
