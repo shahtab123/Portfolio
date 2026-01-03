@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import type { BlogPost } from "@/lib/blog-data";
+import { getAllBlogPosts, type BlogPost } from "@/lib/blog-data";
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -24,10 +24,12 @@ export function BlogSection() {
         const response = await fetch("/api/blog");
         if (response.ok) {
           const data = await response.json();
-          setPosts(data.slice(0, 2)); // Show only first 2 posts
+          // Fallback to default posts if API returns empty array
+          const postsToShow = data.length > 0 ? data : getAllBlogPosts();
+          setPosts(postsToShow.slice(0, 2)); // Show only first 2 posts
         } else {
           console.error("Failed to load posts from API");
-          setPosts([]);
+          setPosts(getAllBlogPosts().slice(0, 2));
         }
       } catch (error) {
         console.error("Failed to load posts", error);
