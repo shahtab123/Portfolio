@@ -7,8 +7,11 @@ A modern, responsive portfolio website built with Next.js, TypeScript, Tailwind 
 - **Personal Portfolio**: Showcase projects, skills, education, and online presence
 - **Blog System**: Full-featured blog with WYSIWYG editor
 - **Project Showcase**: Display projects with images, links, and hackathon winner badges
-- **Dark/Light Mode**: Theme switching support
+- **Dark/Light Mode**: Theme switching support (defaults to dark mode)
 - **Responsive Design**: Mobile-first, works on all devices
+- **SEO Optimized**: Complete SEO setup with meta tags, Open Graph, Twitter Cards, and structured data
+- **Email Copy Feature**: Click email icon to copy email address to clipboard with notification
+- **Social Links**: Quick access to GitHub, LinkedIn, X (Twitter), and email
 
 ## Tech Stack
 
@@ -60,9 +63,9 @@ The portfolio includes a built-in blog editor accessible at `/blog/editor`. Here
 
 ### Accessing the Blog Editor
 
-1. Navigate to the Blog page: Click "Blog" in the navigation or go to `/blog`
-2. Click the "Editor" button in the top right corner
-3. Or directly visit: `http://localhost:3000/blog/editor`
+1. Directly visit: `http://localhost:3000/blog/editor`
+   - Note: The editor is not linked from the blog page for security reasons
+   - You can bookmark this URL for easy access
 
 ### Creating a New Blog Post
 
@@ -156,6 +159,28 @@ portfolio/
 └── public/                       # Static assets
 ```
 
+## SEO Optimization
+
+The portfolio is fully SEO optimized with:
+
+- **Meta Tags**: Comprehensive meta tags for search engines
+- **Open Graph**: Social media sharing optimization (uses `/card.png` for previews)
+- **Twitter Cards**: Optimized Twitter sharing
+- **Structured Data**: JSON-LD schema for Person, Education, and Skills
+- **Sitemap**: Auto-generated sitemap at `/sitemap.xml`
+- **Robots.txt**: Search engine crawling instructions
+- **Canonical URLs**: Proper URL canonicalization
+
+### Updating Domain
+
+If deploying to a different domain, update the following files:
+- `src/app/layout.tsx` - Update `metadataBase` and all URL references
+- `src/app/page.tsx` - Update structured data URLs
+- `src/app/sitemap.ts` - Update `baseUrl`
+- `public/robots.txt` - Update sitemap URL
+
+Current domain: `shahtab.xyz`
+
 ## Customization
 
 ### Adding Projects
@@ -168,10 +193,11 @@ Edit `src/app/projects/page.tsx` and `src/components/projects-section.tsx` to ad
 - **Education**: Edit `src/components/education.tsx`
 - **Skills**: Edit `src/components/skills-section.tsx`
 - **Online Presence**: Edit `src/components/online-presence.tsx`
+- **Social Links**: Update email, GitHub, LinkedIn, and X (Twitter) links in `src/components/hero-section.tsx`
 
 ### Changing Theme
 
-The site uses Next.js themes. Toggle between light/dark mode using the theme switcher in the navigation.
+The site uses Next.js themes with dark mode as default. Toggle between light/dark mode using the theme switcher in the navigation (yellow icon in dark mode, black in light mode).
 
 ## Building for Production
 
@@ -187,7 +213,24 @@ The easiest way to deploy is using [Vercel](https://vercel.com):
 1. Push your code to GitHub
 2. Import your repository in Vercel
 3. Deploy with default settings
+4. Update domain references in the codebase if using a custom domain
+
+### Environment Variables
+
+No environment variables are required for basic functionality. Blog posts are stored in localStorage.
+
+## Live Site
+
+🌐 **Live URL**: [https://shahtab.xyz](https://shahtab.xyz)
 
 ## License
 
 MIT
+
+## Author
+
+**Shahtab Mohtasin**
+- Email: cloudstack6@gmail.com
+- GitHub: [@shahtab123](https://github.com/shahtab123)
+- LinkedIn: [shahtab-mohtasin](https://www.linkedin.com/in/shahtab-mohtasin/)
+- X (Twitter): [@SMohtasin](https://x.com/SMohtasin)

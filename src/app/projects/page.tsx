@@ -1,8 +1,21 @@
+import { Metadata } from "next";
 import { ExternalLink, Github, ArrowLeft, Trophy, Youtube } from "lucide-react";
 import { SiX, SiLinkedin } from "react-icons/si";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "A collection of projects built by Shahtab Mohtasin, including AI-powered applications, web apps, Chrome extensions, and hackathon-winning solutions.",
+  openGraph: {
+    title: "Projects | Shahtab Mohtasin",
+    description:
+      "Explore projects built by Shahtab Mohtasin, including AI-powered applications, web apps, Chrome extensions, and hackathon-winning solutions.",
+    type: "website",
+  },
+};
 
 const projects = [
   {
@@ -129,7 +142,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="py-4">
+    <div className="py-4 flex flex-col flex-1">
       <div className="mb-4">
         <Link href="/">
           <Button variant="ghost" size="sm" className="gap-2 mb-4">

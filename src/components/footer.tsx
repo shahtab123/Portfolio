@@ -10,7 +10,7 @@ export function Footer() {
   });
 
   return (
-    <footer className="pt-4 mt-4 pb-2">
+    <footer className="pt-4 mt-auto pb-2">
       <div className="max-w-2xl mx-auto border-t pt-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-muted-foreground">
         {/* Left side */}

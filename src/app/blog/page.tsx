@@ -1,9 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowLeft, ArrowRight, Edit } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
 import { getAllBlogPosts, type BlogPost } from "@/lib/blog-data";
 
@@ -34,28 +33,12 @@ export default function BlogPage() {
   }, []);
 
   return (
-    <div className="py-4">
+    <div className="py-4 flex flex-col flex-1">
       <div className="mb-4">
-        <Link href="/">
-          <Button variant="ghost" size="sm" className="gap-2 mb-4">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
-            <p className="mt-2 text-muted-foreground">
-              Thoughts on software development, engineering, and technology.
-            </p>
-          </div>
-          <Link href="/blog/editor">
-            <Button variant="outline" size="sm" className="gap-2">
-              <Edit className="h-4 w-4" />
-              Editor
-            </Button>
-          </Link>
-        </div>
+        <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
+        <p className="mt-2 text-muted-foreground">
+          Thoughts on software development, engineering, and technology.
+        </p>
       </div>
 
       <div className="space-y-6">

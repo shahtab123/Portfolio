@@ -181,7 +181,7 @@ export function ProjectsSection() {
                 {project.image ? (
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - Project screenshot`}
                     fill
                     className="object-contain"
                   />

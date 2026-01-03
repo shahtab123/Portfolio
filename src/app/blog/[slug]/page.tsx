@@ -64,7 +64,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   }
 
   return (
-    <article className="py-4">
+    <article className="py-4 flex flex-col flex-1">
       <Link href="/blog">
         <Button variant="ghost" size="sm" className="gap-2 mb-4">
           <ArrowLeft className="h-4 w-4" />
