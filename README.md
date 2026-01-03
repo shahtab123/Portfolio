@@ -121,9 +121,10 @@ The editor provides a rich text editing experience with the following features:
 
 ### Blog Post Storage
 
-- Blog posts are stored in **localStorage** in your browser
-- Posts persist between sessions on the same browser
-- To share posts across devices, you'll need to export/import the data or use a backend
+- Blog posts are stored in **Vercel Blob Storage** for permanent, cross-device access
+- Posts are accessible to all users and persist across sessions
+- Storage is configured using Vercel Blob Storage API
+- To configure, set the `BLOB_READ_WRITE_TOKEN` environment variable in your Vercel dashboard
 
 ### Tips for Writing Blog Posts
 
@@ -212,8 +213,22 @@ The easiest way to deploy is using [Vercel](https://vercel.com):
 
 1. Push your code to GitHub
 2. Import your repository in Vercel
-3. Deploy with default settings
-4. Update domain references in the codebase if using a custom domain
+3. **Configure Environment Variables**:
+   - Go to your Vercel project settings
+   - Add `BLOB_READ_WRITE_TOKEN` environment variable
+   - Get your token from [Vercel Blob Storage](https://vercel.com/dashboard/stores)
+   - Optional: Add `BLOB_STORE_ID` if using a specific store
+4. Deploy with default settings
+5. Update domain references in the codebase if using a custom domain
+
+### Environment Variables
+
+Required for blog functionality:
+- `BLOB_READ_WRITE_TOKEN`: Your Vercel Blob Storage read/write token
+
+Optional:
+- `BLOB_STORE_ID`: Specific blob store ID (defaults to provided store)
+- `BLOB_BASE_URL`: Base URL for blob storage
 
 ### Environment Variables
 

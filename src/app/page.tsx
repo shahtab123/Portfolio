@@ -61,7 +61,7 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+        />
       <div className="flex flex-col flex-1">
         <HeroSection />
         <Education />
@@ -76,7 +76,7 @@ export default function Home() {
         <SectionDivider />
         <ContactSection />
         <Footer />
-      </div>
+        </div>
     </>
   );
 }

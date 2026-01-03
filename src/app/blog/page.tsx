@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
-import { getAllBlogPosts, type BlogPost } from "@/lib/blog-data";
+import type { BlogPost } from "@/lib/blog-data";
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -18,18 +18,23 @@ export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    // Load posts from localStorage or default data
-    const stored = localStorage.getItem("blog-posts");
-    if (stored) {
+    // Load posts from API
+    const fetchPosts = async () => {
       try {
-        setPosts(JSON.parse(stored));
-      } catch (e) {
-        console.error("Failed to load posts", e);
+        const response = await fetch("/api/blog");
+        if (response.ok) {
+          const data = await response.json();
+          setPosts(data);
+        } else {
+          console.error("Failed to load posts from API");
+          setPosts([]);
+        }
+      } catch (error) {
+        console.error("Failed to load posts", error);
         setPosts(getAllBlogPosts());
       }
-    } else {
-      setPosts(getAllBlogPosts());
-    }
+    };
+    fetchPosts();
   }, []);
 
   return (

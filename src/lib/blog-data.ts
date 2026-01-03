@@ -168,24 +168,40 @@ OAuth is the standard for third-party authentication:
   },
 ];
 
-// Load from localStorage if available
-if (typeof window !== "undefined") {
+// Default blog posts (fallback if localStorage is empty)
+const defaultBlogPosts: BlogPost[] = blogPosts;
+
+// Helper function to load from localStorage
+function loadFromLocalStorage(): BlogPost[] {
+  if (typeof window === "undefined") {
+    return defaultBlogPosts;
+  }
+  
   const stored = localStorage.getItem("blog-posts");
   if (stored) {
     try {
-      blogPosts = JSON.parse(stored);
+      const parsed = JSON.parse(stored);
+      // Only use stored data if it's an array with at least one item
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
     } catch (e) {
       console.error("Failed to parse stored blog posts", e);
     }
   }
+  
+  return defaultBlogPosts;
 }
 
 export function getAllBlogPosts(): BlogPost[] {
-  return blogPosts;
+  // Always check localStorage when called (client-side)
+  return loadFromLocalStorage();
 }
 
 export function getBlogPost(id: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.id === id);
+  // Always check localStorage when called (client-side)
+  const posts = loadFromLocalStorage();
+  return posts.find((post) => post.id === id);
 }
 
 export function saveBlogPost(post: BlogPost): void {

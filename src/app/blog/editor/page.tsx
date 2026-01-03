@@ -10,9 +10,6 @@ import { Label } from "@/components/ui/label";
 import { BlogEditor } from "@/components/blog-editor";
 import { Footer } from "@/components/footer";
 import {
-  getAllBlogPosts,
-  saveBlogPost,
-  deleteBlogPost,
   createBlogPostId,
   type BlogPost,
 } from "@/lib/blog-data";
@@ -26,20 +23,24 @@ export default function BlogEditorPage() {
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [readTime, setReadTime] = useState("5 min read");
-
   useEffect(() => {
-    // Load posts from localStorage
-    const stored = localStorage.getItem("blog-posts");
-    if (stored) {
+    // Load posts from API (Vercel Blob Storage)
+    const fetchPosts = async () => {
       try {
-        setPosts(JSON.parse(stored));
-      } catch (e) {
-        console.error("Failed to load posts", e);
-        setPosts(getAllBlogPosts());
+        const response = await fetch("/api/blog");
+        if (response.ok) {
+          const data = await response.json();
+          setPosts(data);
+        } else {
+          console.error("Failed to load posts from API");
+          setPosts([]);
+        }
+      } catch (error) {
+        console.error("Failed to load posts", error);
+        setPosts([]);
       }
-    } else {
-      setPosts(getAllBlogPosts());
-    }
+    };
+    fetchPosts();
   }, []);
 
   const handleEdit = (post: BlogPost) => {
@@ -51,17 +52,28 @@ export default function BlogEditorPage() {
     setReadTime(post.readTime);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (confirm("Are you sure you want to delete this blog post?")) {
-      deleteBlogPost(id);
-      setPosts(getAllBlogPosts());
-      if (editingPost?.id === id) {
-        setEditingPost(null);
-        setIsCreating(false);
-        setTitle("");
-        setExcerpt("");
-        setContent("");
-        setReadTime("5 min read");
+      try {
+        const response = await fetch(`/api/blog?id=${id}`, {
+          method: "DELETE",
+        });
+        if (response.ok) {
+          setPosts(posts.filter((p) => p.id !== id));
+          if (editingPost?.id === id) {
+            setEditingPost(null);
+            setIsCreating(false);
+            setTitle("");
+            setExcerpt("");
+            setContent("");
+            setReadTime("5 min read");
+          }
+        } else {
+          alert("Failed to delete post");
+        }
+      } catch (error) {
+        console.error("Error deleting post:", error);
+        alert("Failed to delete post");
       }
     }
   };
@@ -75,7 +87,7 @@ export default function BlogEditorPage() {
     setReadTime("5 min read");
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!title.trim() || !excerpt.trim() || !content.trim()) {
       alert("Please fill in all fields");
       return;
@@ -90,14 +102,36 @@ export default function BlogEditorPage() {
       date: editingPost?.date || new Date().toISOString().split("T")[0],
     };
 
-    saveBlogPost(post);
-    setPosts(getAllBlogPosts());
-    setEditingPost(null);
-    setIsCreating(false);
-    setTitle("");
-    setExcerpt("");
-    setContent("");
-    setReadTime("5 min read");
+    try {
+      const response = await fetch("/api/blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(post),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // Refresh posts list
+        const postsResponse = await fetch("/api/blog");
+        if (postsResponse.ok) {
+          const updatedPosts = await postsResponse.json();
+          setPosts(updatedPosts);
+        }
+        setEditingPost(null);
+        setIsCreating(false);
+        setTitle("");
+        setExcerpt("");
+        setContent("");
+        setReadTime("5 min read");
+      } else {
+        alert("Failed to save post");
+      }
+    } catch (error) {
+      console.error("Error saving post:", error);
+      alert("Failed to save post");
+    }
   };
 
   const handleCancel = () => {
@@ -118,6 +152,7 @@ export default function BlogEditorPage() {
             Back to Blog
           </Button>
         </Link>
+
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight">Blog Editor</h1>

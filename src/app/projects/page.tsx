@@ -1,8 +1,6 @@
 import { Metadata } from "next";
-import { ExternalLink, Github, ArrowLeft, Trophy, Youtube } from "lucide-react";
+import { ExternalLink, Github, Trophy, Youtube } from "lucide-react";
 import { SiX, SiLinkedin } from "react-icons/si";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
@@ -144,12 +142,6 @@ export default function ProjectsPage() {
   return (
     <div className="py-4 flex flex-col flex-1">
       <div className="mb-4">
-        <Link href="/">
-          <Button variant="ghost" size="sm" className="gap-2 mb-4">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
         <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
         <p className="mt-2 text-muted-foreground">
           A collection of projects I&apos;ve built and contributed to.

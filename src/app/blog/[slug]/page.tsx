@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/footer";
-import { getBlogPost, type BlogPost } from "@/lib/blog-data";
+import type { BlogPost } from "@/lib/blog-data";
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -21,25 +21,19 @@ export default function BlogPostPage({ params }: { params: Promise<{ slug: strin
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Load posts from localStorage or default data
-    const stored = localStorage.getItem("blog-posts");
-    let posts: BlogPost[] = [];
-    
-    if (stored) {
+    // Load post from API
+    const fetchPost = async () => {
       try {
-        posts = JSON.parse(stored);
-      } catch (e) {
-        console.error("Failed to load posts", e);
-        posts = [];
+        const response = await fetch(`/api/blog/${slug}`);
+        if (response.ok) {
+          const data = await response.json();
+          setPost(data);
+        }
+      } finally {
+        setLoading(false);
       }
-    }
-
-    const foundPost = posts.find((p) => p.id === slug) || getBlogPost(slug);
-    
-    if (foundPost) {
-      setPost(foundPost);
-    }
-    setLoading(false);
+    };
+    fetchPost();
   }, [slug]);
 
   if (loading) {
