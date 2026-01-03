@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
-import type { BlogPost } from "@/lib/blog-data";
+import { getAllBlogPosts, type BlogPost } from "@/lib/blog-data";
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -24,10 +24,11 @@ export default function BlogPage() {
         const response = await fetch("/api/blog");
         if (response.ok) {
           const data = await response.json();
-          setPosts(data);
+          // Fallback to default posts if API returns empty array
+          setPosts(data.length > 0 ? data : getAllBlogPosts());
         } else {
           console.error("Failed to load posts from API");
-          setPosts([]);
+          setPosts(getAllBlogPosts());
         }
       } catch (error) {
         console.error("Failed to load posts", error);
