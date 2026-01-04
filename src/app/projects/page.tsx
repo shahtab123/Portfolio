@@ -161,8 +161,8 @@ export default function ProjectsPage() {
             }`}
           >
             <div className="flex flex-col gap-4">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <h2 className="text-xl font-semibold tracking-tight">
                     {project.title}
                   </h2>
@@ -173,7 +173,7 @@ export default function ProjectsPage() {
                     </span>
                   )}
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}

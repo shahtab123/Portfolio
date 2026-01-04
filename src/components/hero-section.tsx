@@ -57,8 +57,8 @@ export function HeroSection() {
         </div>
       )}
       {/* Bangla word - "Coder" */}
-      <div className="flex justify-center mb-8">
-        <span className="text-[8rem] sm:text-[10rem] font-bold text-muted-foreground/[0.08] dark:text-white/[0.08] leading-none tracking-tighter select-none">
+      <div className="flex justify-center mb-8 overflow-hidden">
+        <span className="text-[5rem] sm:text-[8rem] md:text-[10rem] font-bold text-muted-foreground/[0.08] dark:text-white/[0.08] leading-none tracking-tighter select-none">
           কোডার
         </span>
       </div>
@@ -70,7 +70,7 @@ export function HeroSection() {
           <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl" />
           <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-background shadow-2xl ring-1 ring-border">
             <Image
-              src="/profile-pic (11).png"
+              src="/profile.webp"
               alt="Shahtab Mohtasin"
               fill
               className="object-cover"

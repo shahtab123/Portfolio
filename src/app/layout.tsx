@@ -61,7 +61,7 @@ export const metadata: Metadata = {
       "Freelance developer and IT consultant specializing in building production-ready software solutions. Master's in IT Management from De Montfort University.",
     images: [
       {
-        url: "/card.png",
+        url: "/card.webp",
         width: 1200,
         height: 630,
         alt: "Shahtab Mohtasin - Software Engineer",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     description:
       "Freelance developer and IT consultant specializing in building production-ready software solutions.",
     creator: "@SMohtasin",
-    images: ["/card.png"],
+    images: ["/card.webp"],
   },
   alternates: {
     canonical: "https://www.shahtab.xyz",

@@ -16,7 +16,7 @@ const education = [
     period: "Aug 2021 - Oct 2022",
     grade: "3.63/4",
     details: "APU-DMU Dual Degree Scheme",
-    logo: "/de_montfort_university_logo.jpeg",
+    logo: "/de_montfort.webp",
   },
   {
     id: "edu-2",

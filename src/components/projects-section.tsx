@@ -15,7 +15,7 @@ const projects = [
     liveUrl: "https://www.hiddenai.cc/",
     twitterUrl: "https://x.com/HiddenAIapp",
     technologies: ["Desktop App", "Windows", "Privacy", "AI"],
-    image: "/hiddenai.png",
+    image: "/hiddenai.webp",
     isHackathonWinner: false,
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     liveUrl: "https://www.hideanytext.com/",
     youtubeUrl: "https://www.youtube.com/@HideAnyText",
     technologies: ["Web App", "Cryptography", "Steganography", "Privacy"],
-    image: "/hideanytext.png",
+    image: "/hideanytext.webp",
     isHackathonWinner: false,
   },
   {
@@ -47,7 +47,7 @@ const projects = [
     liveUrl: "https://aiapp.gg/",
     linkedinUrl: "https://www.linkedin.com/company/aiapp-gg/",
     technologies: ["Web Apps", "Productivity", "SaaS", "Tools"],
-    image: "/aiapp.png",
+    image: "/aiapp.webp",
     isHackathonWinner: false,
   },
   {
@@ -78,7 +78,7 @@ const projects = [
       "AI-Powered Screenshot & Screen Recording Extension (30+ features)",
     youtubeUrl: "https://www.youtube.com/watch?v=hgz1arFnC4c",
     technologies: ["Chrome Extension", "AI", "Screenshot", "Screen Recording"],
-    image: "/capturepro.png",
+    image: "/capturepro.webp",
     isHackathonWinner: false,
   },
   {
@@ -195,7 +195,7 @@ export function ProjectsSection() {
               {/* Content */}
               <div className="flex-1 p-5">
                 <div className="flex flex-col gap-3">
-                  <div className="flex items-start justify-between">
+                  <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-semibold tracking-tight text-lg">
                         {project.title}
@@ -207,7 +207,7 @@ export function ProjectsSection() {
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 flex-wrap">
                       {project.liveUrl && (
                         <a
                           href={project.liveUrl}
