@@ -91,6 +91,9 @@ export function HeroSection() {
           <p className="mt-3 text-muted-foreground font-mono text-sm">
             Software Engineer • Developer • Builder
           </p>
+          <p className="mt-2 text-blue-500 font-mono text-xs">
+            Mujib 100 Idea Contest awardee || 2× Hackathon winner || 20+ Projects completed
+          </p>
 
           {/* Social Links */}
           <div className="mt-5 flex items-center gap-3">
