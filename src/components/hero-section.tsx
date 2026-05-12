@@ -67,8 +67,8 @@ export function HeroSection() {
       <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:gap-10">
         {/* Profile Picture */}
         <div className="relative h-36 w-36 shrink-0">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-xl" />
-          <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-background shadow-2xl ring-1 ring-border">
+          <div className="absolute inset-0 rounded-full bg-red-500/30 dark:bg-yellow-400/30 blur-xl" />
+          <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-red-500/50 dark:border-yellow-400/50 shadow-[0_0_20px_rgba(239,68,68,0.4)] dark:shadow-[0_0_20px_rgba(250,204,21,0.4)] ring-1 ring-red-500/30 dark:ring-yellow-400/30">
             <Image
               src="/profile.webp"
               alt="Shahtab Mohtasin"
@@ -92,7 +92,7 @@ export function HeroSection() {
             Software Engineer • Developer • Builder
           </p>
           <p className="mt-2 text-blue-500 font-mono text-xs">
-            Mujib 100 Idea Contest awardee || 2× Hackathon winner || 20+ Projects completed
+            Mujib 100 Idea Contest awardee || <span className="text-red-500">2× Hackathon winner</span> || 20+ Projects completed
           </p>
 
           {/* Social Links */}

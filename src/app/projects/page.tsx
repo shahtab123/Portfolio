@@ -17,6 +17,15 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    id: "project-trademonkey",
+    title: "TradeMonkey",
+    description:
+      "A trading platform combining pre-IPOs, indices, equities, commodities, FX, and crypto perpetuals with live pricing, group games, and predictive markets — all in one place.",
+    liveUrl: "https://www.trademonkey.xyz/",
+    technologies: ["Trading", "Crypto", "Prediction Markets", "Web App"],
+    isHackathonWinner: false,
+  },
+  {
     id: "project-0",
     title: "HiddenAI",
     description:
@@ -41,7 +50,6 @@ const projects = [
     title: "AIkitty",
     description:
       "AIkitty is a marketplace of full-stack AI SaaS templates built for developers and creators using ComfyUI, Replicate, FAL.ai, and other generative tools.",
-    liveUrl: "https://aikitty.cc/",
     technologies: ["Marketplace", "AI SaaS", "Templates", "Full-Stack"],
     isHackathonWinner: false,
   },
