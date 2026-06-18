@@ -18,6 +18,28 @@ const projects = [
     isHackathonWinner: false,
   },
   {
+    id: "project-web3scout",
+    title: "Web3Scout",
+    description:
+      "A curated directory of free and open-source Web3 APIs, starter recipes, grants, ecosystems, and builder intel — built to help developers find what they need to ship faster.",
+    liveUrl: "https://www.web3scout.xyz/",
+    githubUrl: "https://github.com/shahtab123/Web3Stack",
+    technologies: ["Web3", "Developer Tools", "APIs", "Open Source"],
+    image: null,
+    isHackathonWinner: false,
+    isOpenSource: true,
+  },
+  {
+    id: "project-planbd",
+    title: "PlanBD",
+    description:
+      "A Dhaka building-compliance tool for exploring RAJUK DAP rules, analyzing any plot, and checking FAR, zoning, incentives, and buildable area in one place.",
+    liveUrl: "https://www.planbd.xyz/",
+    technologies: ["Web App", "Urban Planning", "RAJUK", "DAP"],
+    image: null,
+    isHackathonWinner: false,
+  },
+  {
     id: "project-0",
     title: "HiddenAI",
     description:
@@ -153,7 +175,7 @@ const projects = [
 export function ProjectsSection() {
   return (
     <section className="py-4">
-      <h2 className="text-lg font-semibold mb-6">Projects</h2>
+      <h2 className="text-lg font-semibold mb-6">Projects ({projects.length})</h2>
 
       <div className="grid gap-4">
         {projects
@@ -215,6 +237,12 @@ export function ProjectsSection() {
                         <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-600 dark:text-yellow-400 border border-yellow-500/20">
                           <Trophy className="h-3 w-3" />
                           Hackathon Winner
+                        </span>
+                      )}
+                      {project.isOpenSource && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-600 dark:text-green-400 border border-green-500/20">
+                          <Github className="h-3 w-3" />
+                          Open Source
                         </span>
                       )}
                     </div>

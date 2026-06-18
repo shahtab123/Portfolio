@@ -26,6 +26,26 @@ const projects = [
     isHackathonWinner: false,
   },
   {
+    id: "project-web3scout",
+    title: "Web3Scout",
+    description:
+      "A curated directory of free and open-source Web3 APIs, starter recipes, grants, ecosystems, and builder intel — built to help developers find what they need to ship faster.",
+    liveUrl: "https://www.web3scout.xyz/",
+    githubUrl: "https://github.com/shahtab123/Web3Stack",
+    technologies: ["Web3", "Developer Tools", "APIs", "Open Source"],
+    isHackathonWinner: false,
+    isOpenSource: true,
+  },
+  {
+    id: "project-planbd",
+    title: "PlanBD",
+    description:
+      "A Dhaka building-compliance tool for exploring RAJUK DAP rules, analyzing any plot, and checking FAR, zoning, incentives, and buildable area in one place.",
+    liveUrl: "https://www.planbd.xyz/",
+    technologies: ["Web App", "Urban Planning", "RAJUK", "DAP"],
+    isHackathonWinner: false,
+  },
+  {
     id: "project-0",
     title: "HiddenAI",
     description:
@@ -150,7 +170,7 @@ export default function ProjectsPage() {
   return (
     <div className="py-4 flex flex-col flex-1">
       <div className="mb-4">
-        <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Projects ({projects.length})</h1>
         <p className="mt-2 text-muted-foreground">
           A collection of projects I&apos;ve built and contributed to.
         </p>
@@ -178,6 +198,12 @@ export default function ProjectsPage() {
                     <span className="inline-flex items-center gap-1 rounded-full bg-yellow-500/10 px-2 py-1 text-xs font-medium text-yellow-600 dark:text-yellow-400 border border-yellow-500/20">
                       <Trophy className="h-3 w-3" />
                       Hackathon Winner
+                    </span>
+                  )}
+                  {project.isOpenSource && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-600 dark:text-green-400 border border-green-500/20">
+                      <Github className="h-3 w-3" />
+                      Open Source
                     </span>
                   )}
                 </div>
